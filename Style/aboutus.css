@@ -1,0 +1,93 @@
+@font-face {
+    font-family: "modam-bold";
+    src: url(../fonts/Modam/Modam-Bold.ttf);
+    font-weight: 900;
+}
+@font-face {
+    font-family: "modam-regular";
+    src: url(../fonts/Modam/Modam-Regular.ttf);
+    font-weight: 400;
+}
+@font-face {
+    font-family: "modam-light";
+    src: url(../fonts/Modam/Modam-Light.ttf);
+    font-weight: 100;
+}
+@font-face {
+    font-family: "modam-lighter";
+    src: url(../fonts/Modam/Modam-ExtraLight.ttf);
+    font-weight: lighter;
+}
+@font-face {
+    font-family: "maneli";
+    src: url(../fonts/Maneli.ttf);
+}
+:root{
+    --bgcolor:#FFF9F0;
+    --greencl:#A8D5BA;
+    --greencl-dark:#6d8f7b;
+    --bluecl:#BFD7ED ;
+    --graycl:#ebebeb;
+    --text-blue:#5A7D9A;
+    --text-blue-hover:#425c72;
+    --text-black:#414141;
+    --text-gray:#53535323;
+    --footer-title-text:#2b2b2b;
+}
+*{
+    margin: 0;
+    padding: 0px;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    color: var(--text-black);
+}
+body{
+    font-family: "modam-regular";
+    background: var(--bgcolor);
+}
+.bg-color-header {
+    background: var(--bluecl);
+    height: 100px;
+}
+header{
+    /* background: none; */
+    height: 70px;
+}   
+header a:hover{
+    color: var(--greencl-dark);
+}
+.buy-cart , .Product__categories{
+    display: none;
+}
+.ab__home-page{
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    margin-bottom: 500px;
+    padding: 0 7%;
+}
+.about__text_container{
+    text-align: right;
+    flex: 3;
+}
+.about__title{
+    font-size: 5rem;
+    margin-bottom: 16px;
+    font-family: "modam-bold";
+}
+.about__text_container h2{
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+.about__text_container h3{
+    font-size: 1.3rem;
+}
+.ab__right-pic{
+    flex: 1;
+}
+.ab__right-pic img{
+    width: 500px;
+}
+.page-dividers path{
+    fill: var(--bluecl) ;
+}

@@ -1,0 +1,220 @@
+@font-face {
+    font-family: "modam-bold";
+    src: url(../Modam/Modam-Bold.ttf);
+    font-weight: normal;
+}
+@font-face {
+    font-family: "modam-regular";
+    src: url(../Modam/Modam-Regular.ttf);
+    font-weight: lighter;
+}
+@font-face {
+    font-family: "modam-light";
+    src: url(../fonts/Modam/Modam-Light.ttf);
+    font-weight: 100;
+}
+
+:root{
+    --bgcolor: #FFF9F0; /* پس‌زمینه‌ی گرم و روشن */
+--primary-color: #6d6d6d; /* خاکستری تیره برای متن‌ها و عناصر اصلی */
+--secondary-color: #5A7D9A; /* آبی ملایم برای دکمه‌ها و لینک‌ها */
+--secondary-color-hover:#8dc2ec;
+--accent-color: #A8D5BA; /* سبز ملایم برای تاکید (دکمه‌های اصلی) */
+--gray-light: #F5F5F5; /* خاکستری بسیار روشن برای پس‌زمینه‌های ثانویه */
+--text-black: #414141; /* متن‌های اصلی */
+--text-white: #FFFFFF;
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "modam-bold";
+}
+body{
+    /* min-height: 100vh; */
+    height: 50vh;    
+    display: flex;  
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+    background: var(--bgcolor);
+    color: var(--text-black);
+    padding: 1rem 2rem;
+    
+}
+
+.form-wraper{
+    perspective: 1000px;
+    width: 100%;
+    max-width: 440px;
+}
+.form-container{
+    position: absolute;
+    width: 100%;
+    transition: transform 0.7s ease, opacity 0.3s ease;
+    transform-style: preserve-3d;
+}
+.form-div{
+    border-radius: 3rem;
+    box-shadow: 13px 13px 20px #afafad,
+    -13px -13px 20px #ffffff;
+    background: var(--gray-light);
+    padding: 35px;
+}
+.form-login{  
+    transform: rotateX(0deg) ;
+    opacity: 1;
+}
+.form-signup{
+    transform: rotateX(180deg);
+    opacity: 0;
+    pointer-events: none;
+}
+.form-login.flip{
+    transform: rotateX(-180deg) ;
+    opacity: 0;
+}
+.form-signup.flip{
+    transform: rotateX(0deg) translateY(-15%);  
+    opacity: 1;
+    pointer-events: auto;
+}
+.title{
+    text-align: center;
+    font-size: 30px;
+}
+.input-group{
+    margin-top: 1.2rem;
+    position: relative;
+}
+
+.inp{
+    padding: 15px;
+    padding-left: 25px;
+    width: 100%;
+    outline: none;
+    border: none;
+    color: var(--text-black);
+    font-size:  1.1rem ;
+    border-radius: 1rem;
+    box-shadow: 0px 0px 1px rgb(177, 177, 177), 
+    1.5px 1.5px 6px rgba(77, 77, 77, 0.514) ,
+    -1.5px -1.5px 6px #ffffff;
+    transition:all .2s ;
+}
+.placeholder{
+    position: absolute;
+    top: 15px;
+    left: 40px; 
+    padding: 0 5px;
+    font-size: 1.1rem;
+    font-family: "modam-regular";
+    pointer-events: none;
+    color: var(--primary-color);
+    transition:.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+
+}
+.inp-icon{
+    color: var(--primary-color);
+    position: absolute;
+    font-size: 1.2rem;
+    top: 20px;
+    left: 20px;
+    cursor: text;
+    transition: .3s;
+}
+.inp:focus{
+    border: 1px solid var(--secondary-color);
+    box-shadow: none;
+}
+/* متن داخللش هست یانه */
+.inp:focus + .placeholder ,
+.inp:valid + .placeholder ,
+.inp:autofill + .placeholder {
+    top: -12px;
+    left: 17px;
+    transform: scale(.9);
+    color: var(--secondary-color);
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgba(245,245,240,1) 100%);
+    border-radius: 1rem;
+}
+.inp:focus ~ .inp-icon ,
+.inp:valid ~ .inp-icon ,
+.inp:autofill ~ .inp-icon {
+    opacity: 0;
+}
+.login-click{
+    margin-top: 30px;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    height: 50px;
+    border-radius: 30px;
+    color: var(--text-white);
+    font-size: 1.3rem;
+    background-color: var(--accent-color);
+    box-shadow: 2px 2px 8px #05050593,
+    -2px -2px 8px #dfffec;
+    transition: all  .5s;
+}
+.login-click:hover ,
+.login-click:focus{
+    background-color: var(--secondary-color);
+    box-shadow: .1px .1px 1px rgba(77, 77, 77, 0.986),
+    -.1px -.1px 1px #dfffec;
+    transform: scale(.98);
+    outline: none;
+}
+.login-click:active{
+    box-shadow: inset 3px 3px 10px #0f1d1c ,
+    inset -3px -3px 10px #8ec5f3;
+}
+.err__dupemail , .err__dupemail2{
+    text-align: center;
+    color: #da0000;
+    margin-top: 15px;
+    margin-bottom: -15px;
+    font-family: "modam-light";
+}
+.email_error , .email_error2{
+    border:solid 1px #da0000;
+}
+.Links{
+    margin-top: 1.2rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: .2rem;
+}
+
+.btn-toggle{
+    text-decoration: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background: none;
+    font-size: 1rem;
+    color: var(--secondary-color);
+    transition: .3s;
+}
+.back-to-home{
+    position: absolute;
+    top: 48px;
+    right: 40px;
+    text-decoration: none;
+    color: var(--accent-color);   
+    transition: .3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+.back-to-home i{
+    font-size: 1.7rem;
+    filter: drop-shadow(rgba(0, 0, 0, 0.24) 0px 1px 2px);
+
+}
+.back-to-home:hover{
+    color: var(--secondary-color);
+}
+.btn-toggle:hover ,a:hover{
+    color: var(--secondary-color-hover);
+    transform: scale(1.05);
+}
