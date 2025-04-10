@@ -112,12 +112,35 @@ header.hidden {
     padding: 5px 0;
     width: 100%;
 }
-
+.user__dropdown{
+    background-color: #ffff;
+    box-shadow: 2px -1px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075), 1px 8px 8px hsl(0deg 0% 0% / 0.075);
+    border-radius: 8px;
+    list-style-type: none;
+    position: absolute;
+    top: 50px;
+    display: none;
+}
+.user__dropdown a{
+    color: var(--text-black);
+}
+.user__dropdown li{
+    padding: .5rem 1rem .5rem 1rem;
+}
+.user__dropdown li:hover{
+    background: var(--graycl);
+}
+.buy-cart.left{
+    margin-left: 0;
+    margin-right: 10px;
+}
+.user__dropdown.show{
+    display: block;
+}
 .buy-cart {
     margin-left: 15px;
     margin-top: 8px;
 }
-
 .buy-cart .buy-cart-pic {
     fill: var(--text-black);
     filter: drop-shadow(-1px 1px 1px #0000002a);
@@ -156,7 +179,15 @@ nav a {
     margin-left: 0;
     margin-right: 10px;
 }
-
+/* .username__header{
+    padding: .5rem;
+    border-radius: 9999px;
+    text-align: center;
+    box-sizing: border-box;
+    background-color: var(--greencl);
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset;
+    color: #ffffff;
+} */
 nav a::after {
     content: "";
     position: absolute;
@@ -209,6 +240,7 @@ nav a:not(:hover){
     margin-top: 4px;
     color: rgb(107, 107, 107);
     cursor: pointer;
+    font-size: 20px;
 }
 
 .search-box-div:hover {
