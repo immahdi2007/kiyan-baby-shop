@@ -15,13 +15,13 @@
 }
 
 :root{
-    --bgcolor: #FFF9F0; /* پس‌زمینه‌ی گرم و روشن */
---primary-color: #6d6d6d; /* خاکستری تیره برای متن‌ها و عناصر اصلی */
---secondary-color: #5A7D9A; /* آبی ملایم برای دکمه‌ها و لینک‌ها */
+--bgcolor: #FFF9F0;
+--primary-color: #6d6d6d;
+--secondary-color: #5A7D9A; 
 --secondary-color-hover:#8dc2ec;
---accent-color: #A8D5BA; /* سبز ملایم برای تاکید (دکمه‌های اصلی) */
---gray-light: #F5F5F5; /* خاکستری بسیار روشن برای پس‌زمینه‌های ثانویه */
---text-black: #414141; /* متن‌های اصلی */
+--accent-color: #A8D5BA; 
+--gray-light: #F5F5F5; 
+--text-black: #414141; 
 --text-white: #FFFFFF;
 }
 *{

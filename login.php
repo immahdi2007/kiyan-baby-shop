@@ -131,60 +131,7 @@
     ?>
     <script src="https://cdn.jsdelivr.net/npm/swalidjs@latest/dist/bundle.js"></script>
     <script>
-        const l_email = new Swalid("#email", {
-            required: true,
-            minLength: 5,
-            maxLength: 65,
-            emailValidation: true,
-        });
-        const s_email = new Swalid("#s_email", {
-            required: true,
-            minLength: 5,
-            maxLength: 65,
-            emailValidation: true,
-            onValidationSuccess: (input) => {
-                input.classList.remove('email_error');
-                const divError = document.querySelector('.err__dupemail')
-                if (divError) {
-                    divError.style.display = "none";
-                }
-            }
-        });
-        const s_pass = new Swalid("#s_pass", {
-            required: true,
-            minLength: 8,
-            maxLength: 15,
-            swalTimer: 10000,
-            swalIconMinLength: "error",
-            swalIconMaxLength: "error",
-            swalTextMinLength: "رمز عبور باید حداقل 8 حرف باشد",
-            swalTextMaxLength: "رمز عبور باید حداکثر 15 حرف باشد",
-            onValidationSuccess: (input) => {
-                input.classList.remove('email_error');
-                const divError = document.querySelector('.err__dupemail')
-                if (divError) {
-                    divError.style.display = "none";
-                }
-            }
-        });
-        const s_repass = new Swalid("#s_repass", {
-            required: true,
-            minLength: 8,
-            maxLength: 15,
-            swalTimer: 10000,
-            swalIconMinLength: "error",
-            swalIconMaxLength: "error",
-            swalTextMinLength: "رمز عبور باید حداقل 8 حرف باشد",
-            swalTextMaxLength: "رمز عبور باید حداکثر 15 حرف باشد",
-            onValidationSuccess: (input) => {
-                input.classList.remove('email_error');
-                const divError = document.querySelector('.err__dupemail')
-                if (divError) {
-                    divError.style.display = "none";
-                }
-            }
-        });
-
+        //for success password
         const pass = document.querySelector('#s_pass');
         const rePass = document.querySelector('#s_repass');
 
@@ -193,7 +140,6 @@
             const signup_btn = document.getElementById('signup_btn');
             const pass_err = document.getElementById('s_pass');
             const repass_err = document.getElementById('s_repass');
-
             if (pass.value !== rePass.value) {
                 console.log("false");
                 if(!divError2){
@@ -213,9 +159,76 @@
                 repass_err.classList.remove('email_error2');
             }
         }   
-        // pass.addEventListener('input', checkpass_repass);
         rePass.addEventListener('input', checkpass_repass);
+        pass.addEventListener('input' , function(){
+            console.log(pass.value.length+"an " + rePass.value.length)
+            if(pass.value.length >= 3 && rePass.value.length >= 7){
+                checkpass_repass();
+            }
+        })
 
+        const s_email = new Swalid("#s_email", {
+            required: true,
+            minLength: 5,
+            maxLength: 65,
+            emailValidation: true,
+            onValidationError: (input) => {
+                const email_err = document.getElementById('s_email');
+                email_err.classList.add('email_error');
+            },
+            onValidationSuccess: (input) => {
+                input.classList.remove('email_error');
+                const divError = document.querySelector('.err__dupemail')
+                if (divError) {
+                    divError.style.display = "none";
+                }
+            }
+        });
+        const s_pass = new Swalid("#s_pass", {
+            required: true,
+            minLength: 8,
+            maxLength: 15,
+            swalTimer: 10000,
+            swalIconMinLength: "error",
+            swalIconMaxLength: "error",
+            swalTextMinLength: "رمز عبور باید حداقل 8 حرف باشد",
+            swalTextMaxLength: "رمز عبور باید حداکثر 15 حرف باشد",
+            onValidationError: (input) => {
+                const pass_err = document.getElementById('s_pass');
+                pass_err.classList.add('email_error');
+            },
+            onValidationSuccess: (input) => {
+                const repass_err = document.getElementById('s_repass');
+                rePass.addEventListener('input', checkpass_repass);
+                input.classList.remove('email_error');
+                const divError = document.querySelector('.err__dupemail')
+                if (divError) {
+                    divError.style.display = "none";
+                }
+            }
+        });
+        const s_repass = new Swalid("#s_repass", {
+            required: true,
+            minLength: 8,
+            maxLength: 15,
+            swalTimer: 10000,
+            swalIconMinLength: "error",
+            swalIconMaxLength: "error",
+            swalTextMinLength: "رمز عبور باید حداقل 8 حرف باشد",
+            swalTextMaxLength: "رمز عبور باید حداکثر 15 حرف باشد",
+            onValidationError: (input) => {
+                const repass_err = document.getElementById('s_repass');
+                repass_err.classList.add('email_error');
+            },
+            onValidationSuccess: (input) => {
+                input.classList.remove('email_error');
+                const divError = document.querySelector('.err__dupemail')
+                if (divError) {
+                    divError.style.display = "none";
+                }
+            }
+        });
+        
         const loginForm = document.getElementById('login-form');
         const signupForm = document.getElementById('signup-form');
         const toggleToSignup = document.getElementById('toggle-to-signup');
