@@ -95,7 +95,9 @@ header.hidden {
     transform: translateY(-120%);
     transition: .7s cubic-bezier(.17, .67, .82, -0.03);
 }
-
+header.hidden .dropdown__wraper{
+    display: none;
+}
 .header-item:not(:nth-child(2)) {
     flex: 2;
     /* min-width: 40%; */
@@ -118,24 +120,93 @@ header.hidden {
     border-radius: 8px;
     list-style-type: none;
     position: absolute;
-    top: 50px;
-    display: none;
+    top: 65px;
+    left: 0px;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    padding-top: .1rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: .5s;
+
+}
+.user__dropdown.show{
+    opacity: 1  ;
+    visibility: visible;
+}
+.user__dropdown.show::after{
+    opacity: 1;
+}
+
+.user__dropdown::after{
+    content: "";
+    width: 0px;
+    height: 0px;
+    border-style: solid;
+    border-width: 0 10px 15.2px 10px;
+    border-color: transparent transparent var(--greencl-dark) transparent;
+    transform: rotate(0deg);
+    position: absolute;
+    top: -15px;
+    left: 28px;
+    z-index: 1;
+    opacity: 0;
+    transition: .5s;
 }
 .user__dropdown a{
     color: var(--text-black);
 }
 .user__dropdown li{
-    padding: .5rem 1rem .5rem 1rem;
+    padding: .5rem 0 .5rem .5rem;
 }
-.user__dropdown li:hover{
+
+.user__dropdown li:hover:not(:first-child){
     background: var(--graycl);
+}
+.user__dropdown li a{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.user__dropdown_header{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+.user__dropdown_header h3{
+    margin-right: .3rem;
+}
+.logout_icon{
+    width: 30px;
+}
+.logout_icon path{
+    fill: var(--text-black);
+}
+.back_icon{
+    width: 25px;
+    fill: var(--text-black);
+    transform: rotateZ(180deg);
+}
+.back_icon path{
+    fill: var(--text-black);
+}
+.dropdown__wraper{
+    position: absolute;
+    width: 45px;
+    height: 27px;
+    background: #413c3c00;
+    z-index: 10;
+    top: 45px;
+    left: 15px;
+    z-index: 0;
+    pointer-events: auto;
 }
 .buy-cart.left{
     margin-left: 0;
     margin-right: 10px;
-}
-.user__dropdown.show{
-    display: block;
+    position: relative;
+    /* top: 3px; */
 }
 .buy-cart {
     margin-left: 15px;

@@ -20,7 +20,12 @@
                 <div class="title">ورود</div>
                 <div class="inputs">
                     <div class="input-group">
-                        <input type="text" name="email" class="inp" id="email" required>
+                        <input type="text" name="email" class="inp" id="l_email" required
+                            <?php if(isset($_SESSION['error']) && $_SESSION['error'] === "passwordError"){
+                                echo "value={$_SESSION['email']}";
+                            }
+                            ?>
+                        >
                         <label class="placeholder" for="plcuser">شماره تلفن ،ایمیل</label>
                         <i class="fa-solid fa-envelope inp-icon"></i>
                     </div>
@@ -76,6 +81,13 @@
             </div>
         </form>
     </div>
+    <script>
+        const email_err = document.getElementById('s_email');
+        const pass_err = document.getElementById('s_pass');
+        const repass_err = document.getElementById('s_repass');
+        const emailNotFound = document.getElementById('l_email');
+        const passNotFound = document.getElementById('l_pass');
+    </script>
     <?php
     // session_start();
     // echo $_SESSION['mahdi'];
@@ -85,10 +97,9 @@
     <script>
     document.addEventListener('DOMContentLoaded',function(){
         document.getElementById('toggle-to-signup').click();
-        const divError = document.createElement('div')
+        const divError = document.createElement('div');
         divError.innerText = 'ایمیل وارد شده قبلا ثبت شده است';
         divError.classList.add('err__dupemail');
-        const email_err = document.getElementById('s_email');
         email_err.classList.add('email_error');
         const signup_btn = document.getElementById('signup_btn');
         signup_btn.insertAdjacentElement('beforebegin', divError);
@@ -101,11 +112,9 @@
     <script>
     document.addEventListener('DOMContentLoaded',function addErrorPass(){
         document.getElementById('toggle-to-signup').click();
-        const divError = document.createElement('div')
+        const divError = document.createElement('div');
         divError.innerText = 'رمز عبور و تکرار آن مشابه نیست';
         divError.classList.add('err__dupemail');
-        const pass_err = document.getElementById('s_pass');
-        const repass_err = document.getElementById('s_repass');
         pass_err.classList.add('email_error');
         repass_err.classList.add('email_error');
         const signup_btn = document.getElementById('signup_btn');
@@ -119,11 +128,28 @@
     <script>
         document.addEventListener('DOMContentLoaded', function(){
         const divError = document.createElement('div');
-        divError.innerText='حساب کاربری شما پیدا نشد';
+        divError.innerText='ایمیل وارد شده صحیح نمی باشد';
         divError.classList.add('err__dupemail');
         document.body.appendChild(divError);
         const login_btn = document.getElementById('login_btn');
         login_btn.insertAdjacentElement('beforebegin', divError);
+        emailNotFound.classList.add('email_error');
+    });
+    </script>";
+        unset($_SESSION['error']);
+    }
+    
+    if (isset($_SESSION['error']) && $_SESSION['error'] === 'passwordError') {
+        echo "
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+        const divError = document.createElement('div');
+        divError.innerText='پسورد شما صحیح نمی باشد';
+        divError.classList.add('err__dupemail');
+        document.body.appendChild(divError);
+        const login_btn = document.getElementById('login_btn');
+        login_btn.insertAdjacentElement('beforebegin', divError);
+        passNotFound.classList.add('email_error');
     });
     </script>";
         unset($_SESSION['error']);
@@ -134,6 +160,7 @@
         //for success password
         const pass = document.querySelector('#s_pass');
         const rePass = document.querySelector('#s_repass');
+        const l_login = document.querySelector('.l_email');
 
         function checkpass_repass(event) {
             const divError2 = document.querySelector('.err__dupemail2');
@@ -166,6 +193,43 @@
                 checkpass_repass();
             }
         })
+        
+        const l_emailcheck = new Swalid("#l_email", {
+            required: true,
+            minLength: 5,
+            maxLength: 65,
+            emailValidation: true,
+            onValidationError: (input) => {
+                emailNotFound.classList.add('email_error');
+            },
+            onValidationSuccess: (input) => {
+                input.classList.remove('email_error');
+                const divError = document.querySelector('.err__dupemail');
+                if (divError) {
+                    divError.style.display = "none";
+                }
+            }
+        });
+        const l_passCheck = new Swalid("#l_pass", {
+            required: true,
+            minLength: 8,
+            maxLength: 15,
+            swalTimer: 10000,
+            swalIconMinLength: "error",
+            swalIconMaxLength: "error",
+            swalTextMinLength: "رمز عبور باید حداقل 8 حرف باشد",
+            swalTextMaxLength: "رمز عبور باید حداکثر 15 حرف باشد",
+            onValidationError: (input) => {
+                passNotFound.classList.add('email_error');
+            },
+            onValidationSuccess: (input) => {
+                input.classList.remove('email_error');
+                const divError = document.querySelector('.err__dupemail')
+                if (divError) {
+                    divError.style.display = "none";
+                }
+            }
+        });
 
         const s_email = new Swalid("#s_email", {
             required: true,

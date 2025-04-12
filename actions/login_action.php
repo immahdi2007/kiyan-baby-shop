@@ -13,18 +13,30 @@ if(!$link){
     exit("اتصال ناموفق" .mysqli_connect_error());
 }
 
-$login = "SELECT * FROM `users` WHERE email='$username' AND password='$password'";
+$login = "SELECT * FROM `users` WHERE email='$username'";
 $result = mysqli_query($link,$login);
 $row = mysqli_fetch_array($result);
- if($row){
+// echo $row[1];
+
+$passCheckQ= "SELECT password FROM `users` WHERE email='$username'";
+$passCheckR = mysqli_query($link,$passCheckQ);
+$passCheck = mysqli_fetch_array($passCheckR);
+// echo $passCheck[0] ;
+// echo 
+ if(isset($row) && $row[1] === $username){
+    if($passCheck[0 ] === $password){
     $_SESSION['user'] = $row['realname'];
     header("Location: ../index.php");
- }
-    else{
-        // session_start();
-        $_SESSION['error'] = 'usernotfound';
+    }else{
+        $_SESSION['error'] = 'passwordError';
+        $_SESSION['email'] = $row['email'];
         header("Location: ../login.php");
-        exit("کاربر پیدا نشد");
-        }
+        echo $_SESSION['error'];
+    }
+ }else{
+    $_SESSION['error'] = 'usernotfound';
+    header("Location: ../login.php");
+    echo $_SESSION['error'];
+ }
 mysqli_close($link);
 ?>

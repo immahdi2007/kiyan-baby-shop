@@ -56,6 +56,9 @@ header{
 header a:hover{
     color: var(--greencl-dark);
 }
+.dropdown__wraper{
+    display: none;
+}
 .buy-cart , .Product__categories{
     display: none;
 }
