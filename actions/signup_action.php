@@ -94,7 +94,7 @@
 
 
     //database
-    $dbname = "kids-shop-db";
+    $dbname = "mehdi1_kiyan-shop-db";
     $link = mysqli_connect("localhost", "root", "", $dbname);
     if (!$link) {
         exit("اتصال ناموفق" . mysqli_connect_error());
@@ -130,7 +130,7 @@
     ?>
         <script>
         setTimeout(function() {
-            location.replace("../Index.php");
+            location.replace("../index.php");
         }, 1000);
     </script>
     <?php
