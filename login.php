@@ -168,7 +168,6 @@
             const pass_err = document.getElementById('s_pass');
             const repass_err = document.getElementById('s_repass');
             if (pass.value !== rePass.value) {
-                console.log("false");
                 if(!divError2){
                 const divError2 = document.createElement('div')
                     divError2.innerText = 'رمز عبور و تکرار آن مشابه نیست';
@@ -180,7 +179,6 @@
                     pass_err.classList.add('email_error2');
                     repass_err.classList.add('email_error2');
             } else {
-                console.log("true");
                 divError2.style.display = "none";
                 pass_err.classList.remove('email_error2');
                 repass_err.classList.remove('email_error2');
@@ -188,7 +186,6 @@
         }   
         rePass.addEventListener('input', checkpass_repass);
         pass.addEventListener('input' , function(){
-            console.log(pass.value.length+"an " + rePass.value.length)
             if(pass.value.length >= 3 && rePass.value.length >= 7){
                 checkpass_repass();
             }
@@ -204,12 +201,14 @@
             },
             onValidationSuccess: (input) => {
                 input.classList.remove('email_error');
+                console.log("email: success");
                 const divError = document.querySelector('.err__dupemail');
                 if (divError) {
                     divError.style.display = "none";
                 }
             }
         });
+
         const l_passCheck = new Swalid("#l_pass", {
             required: true,
             minLength: 8,
@@ -224,6 +223,8 @@
             },
             onValidationSuccess: (input) => {
                 input.classList.remove('email_error');
+                console.log("password: success");
+                
                 const divError = document.querySelector('.err__dupemail')
                 if (divError) {
                     divError.style.display = "none";

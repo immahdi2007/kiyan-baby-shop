@@ -79,7 +79,13 @@
         $password = $_POST["password"];
         $retypepass = $_POST["retypepass"];
     } else {
-    
+    ?>
+        <script>
+        setTimeout(() => {
+            location.replace("../index.php");
+        }, 1000);
+        </script>
+    <?php
         exit('<h3>برخی از فیلد ها مقدار دهی نشده</h3>
             <svg class="error_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
             <path fill="#f78f8f" d="M40,77.5C19.322,77.5,2.5,60.678,2.5,40S19.322,2.5,40,2.5S77.5,19.322,77.5,40S60.678,77.5,40,77.5 z" />
@@ -94,11 +100,7 @@
 
 
     //database
-    $dbname = "mehdi1_kiyan-shop-db";
-    $link = mysqli_connect("localhost", "root", "", $dbname);
-    if (!$link) {
-        exit("اتصال ناموفق" . mysqli_connect_error());
-    }
+    include("../include/connection.php");
 
     $login = "SELECT * FROM `users` WHERE email='$email'";
     $result = mysqli_query($link, $login);
@@ -117,11 +119,11 @@
         header("Location: ../login.php");
         exit("کلمه عبور و تکرار آن مشابه نیست");
     }
-    $adduserQuery = "INSERT INTO users (id, email, realname, password, type) VALUES (NULL,'$email','$realname','$password',1)";
+    $adduserQuery = "INSERT INTO users (id, email, realname, password, type) VALUES (NULL,'$email','$realname','$password',0)";
     if (mysqli_query($link, $adduserQuery) === true) {
         $_SESSION['user'] = $realname;
         echo '<div class="complete_div">
-                <video autoplay loop muted playsinline width="100px" height="100px">
+                <video width="100px" height="100px">
                     <source src="../icons/loginloeader.webm" type="video/webm">
                 </video>
                 <h2>درحال بازگشت به صفحه قبل</h2>

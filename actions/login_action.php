@@ -5,13 +5,17 @@ isset($_POST[ "password"]) && !empty($_POST["password"])){
     $username= $_POST["email"];
     $password = $_POST["password"];
 }else{
+        ?>
+    <script>
+        setTimeout(() => {
+            location.replace("../index.php");
+        }, 1000);
+    </script>
+    <?php
     exit("برخی از فیلد ها پر نشده");
 }
-$dbname = 'mehdi1_kiyan-shop-db';
-$link = mysqli_connect("localhost","root","",$dbname);
-if(!$link){
-    exit("اتصال ناموفق" .mysqli_connect_error());
-}
+
+include("../include/connection.php");
 
 $login = "SELECT * FROM `users` WHERE email='$username'";
 $result = mysqli_query($link,$login);
@@ -24,8 +28,13 @@ $passCheck = mysqli_fetch_array($passCheckR);
 // echo $passCheck[0] ;
 // echo 
  if(isset($row) && $row[1] === $username){
-    if($passCheck[0 ] === $password){
+    if($passCheck[0] === $password){
     $_SESSION['user'] = $row['realname'];
+    if($row['type'] == 1){
+        $_SESSION["userType"] = "admin";
+    }elseif($row['type'] == 0){
+        $_SESSION["userType"] = "public";
+    }
     header("Location: ../index.php");
     }else{
         $_SESSION['error'] = 'passwordError';

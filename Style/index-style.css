@@ -175,18 +175,22 @@ header.hidden .dropdown__wraper{
     justify-content: space-between;
 }
 .user__dropdown_header h3{
-    margin-right: .3rem;
+    margin-right: 8px;
 }
 .logout_icon{
     width: 30px;
 }
 .logout_icon path{
     fill: var(--text-black);
+    transition: .3s;
+}
+.logout_icon:hover path{
+    fill: var(--greencl);
 }
 .back_icon{
     width: 25px;
     fill: var(--text-black);
-    transform: rotateZ(180deg);
+    margin-right: 8px;
 }
 .back_icon path{
     fill: var(--text-black);
@@ -524,11 +528,15 @@ header .title {
 
 
 .main-all {
-    margin-bottom: 100px;
+
 }
 .main-all__container{
-    padding: 0 7%;
-}
+    padding: 0 4%;
+    background: #64cf4c;
+    background: linear-gradient(177deg, rgba(100, 207, 76, 1) 0%, rgba(93, 163, 119, 1) 28%, rgba(103, 161, 94, 1) 48%, rgba(158, 194, 104, 1) 69%, rgba(196, 217, 111, 1) 100%);
+
+
+   }
 .prd-ctg__bg{
     height: 370px;
     background: rgb(248,255,250);
@@ -617,7 +625,7 @@ header .title {
 
 .special-product__container{
     direction: rtl;
-    margin-top: 100px;
+    margin-top: 0px;
     background: #eeeeee;
     /* background: linear-gradient(172deg, rgba(238,238,238,1) 0%, rgba(199, 199, 199, 0.548) 51%, rgba(255,255,255,1) 100%); */
     background: rgb(191,215,237);
@@ -903,7 +911,8 @@ footer li a:hover {
 .scroll-top {
     position: sticky;
     /* left: -0px; */
-    margin-left: -85px;
+    margin-left: -46px;
+    margin-bottom: 70px;
     top: 90%;
     width: 60px;
     filter: drop-shadow(0px 2px 1px #11111148);
@@ -921,7 +930,24 @@ footer li a:hover {
 }
 
 .scroll-top path {
-    fill: var(--greencl-dark);
+    fill: var(--bgcolor);
     filter: opacity(0.5);
     transition: .3s;
+}
+.all-products{
+    margin-top: 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+    padding-inline: 2%;
+    padding-bottom: 100px;
+}
+.special-product__title-containe{
+
+    height: 350px;
+    width: 300;
+background: #ffffff;
+background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(245, 250, 247, 1) 50%, rgba(255, 255, 255, 1) 100%);
+    border-radius: 20px;
+    box-shadow: 1px 1px 10px #1111;
 }
