@@ -1,6 +1,7 @@
 <?php
 session_start();
 // session_destroy();
+include("connection.php");
 ?>
 <!DOCTYPE html>
 <html lang="fa">
@@ -8,6 +9,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate">
     <link rel="stylesheet" href="./Style/index-style.css?v=0.000001">
     <link rel="stylesheet" href="./css/all.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
