@@ -23,16 +23,16 @@
     src: url(../fonts/Maneli.ttf);
 }
 :root{
-    --bgcolor:#FFF9F0;
-    --greencl:#A8D5BA;
-    --greencl-dark:#6d8f7b;
-    --bluecl:#BFD7ED ;
-    --graycl:#ebebeb;
-    --text-blue:#5A7D9A;
-    --text-blue-hover:#425c72;
-    --text-black:#414141;
-    --text-gray:#53535323;
-    --footer-title-text:#2b2b2b;
+    --bgcolor: #FFF9F0;
+    --greencl: #1e5afd;
+    --greencl-dark: #00d2ff;
+    --bluecl: #BFD7ED;
+    --graycl: #ebebeb;
+    --text-blue: #147cb8;
+    --text-blue-hover: #425c72;
+    --text-black: #414141;
+    --text-gray: #53535323;
+    --footer-title-text: #2b2b2b;
 }
 *{
     margin: 0;
@@ -54,7 +54,7 @@ header{
     height: 70px;
 }   
 header a:hover{
-    color: var(--greencl-dark);
+    color: var(--greencl);
 }
 .dropdown__wraper{
     display: none;
