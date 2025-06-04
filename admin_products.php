@@ -29,7 +29,7 @@ if(!(isset($_SESSION["user"]) && $_SESSION["userType"] == "admin")){
                 </div>
                 <div class="input_container_prd">
                     <label for="">دسته بندی کالا</label>
-                    <input type="text" name="prd_category">
+                    <input type="text" name="prd_category"> 
                 </div>
                 <div class="input_container_prd">
                     <label for="">آپلود تصویر کالا</label>

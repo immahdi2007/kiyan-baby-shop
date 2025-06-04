@@ -29,8 +29,21 @@ $uploadOk = 1;
 $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
 if (isset($_FILES['prd_image']) && ($_FILES['prd_image']['error'] === 0)) {
     $check = getimagesize($_FILES['prd_image']['tmp_name']);
-    if ($check === false) {
-        echo "فایل انتخاب شده تصویر نیست";
+    if($check === false){
+        exit("فایل انتخاب شده تصویر نیست");
+    }
+    $width = $check[0];
+    $height = $check[1];
+    $ratio = $width / $height;
+    $expected_ratio = 1 / 1;
+    if(abs($ratio - $expected_ratio) > 0.01){
+        exit("نسبت تصویر باید 1:1 باشد.\n 
+        تصویر فعلی نسبت{$width}:{$height} دارد.");
+    }
+    if ($check[0] < 400 && $check[1] < 400 ) {
+        exit( "اندازه تصویر خیلی کوچک است لطفا تصویری با حداقل 
+        400*400
+        آپلود کنید");
         $uploadOk = 0;
     } else {
         echo " پرونده انتخابی یک تصویر از نوع " . $check['mime'] . " است"."<br>";
@@ -41,8 +54,8 @@ if (file_exists($target_file)) {
     exit("پرونده ای با همین نام در سرویس دهنده میزبان وجود دارد"."<br>");
     $uploadOk = 0;
 }
-if ($_FILES['prd_image']['size'] > (500 * 1024)) {
-    exit( "اندازه فایل تصویری بیشتر از 500 کیلوبایت است"."<br>");
+if ($_FILES['prd_image']['size'] > (2 * 1024 * 1024)) {
+    exit( "اندازه فایل تصویری بیشتر از 2 مگابایت است"."<br>");
     $uploadOk = 0;
 }
 

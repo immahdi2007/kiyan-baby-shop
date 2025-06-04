@@ -1,6 +1,7 @@
 <?php
 include("include/connection.php");
 include("include/header.php");
+
 $prd_code = 0;
 if (isset($_GET['id'])) {
     $prd_code = $_GET['id'];
@@ -10,39 +11,32 @@ $result = mysqli_query($link, $query);
 
 if ($row = mysqli_fetch_array($result)) {
     ?>
-    <div class="product-item__container">
-        <a href="">
-            <div class="prd-img_container">
-                <img src="img/products/<?= $row['prd_image'] ?>" alt="">
-            </div>
-        </a>
-        <div class="product_caption">
-            <h4><a href=""><?= $row['prd_name'] ?></a></h4>
-            <span>
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20"
-                    viewBox="0 0 250 250">
-                    <image id="تومان" x="24" y="99" width="93" height="93"
-                        xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF0AAABdCAYAAADHcWrDAAAEnElEQVR4nO2dTaiVRRiAn2vRVYtS+pGEq0FQUJQaZiXJhRQxEIpWhYuyP6kIXBRZbYxw08pdUTt/aeNCV6ZGuagoLySSaS1cpFEh/Xqte29pvIf54PNw7r3f971zzjtzfB+Y5ZzzznPmzjfzzsx3AS42LF/jNGKGa+s9Lt0Al26ASzfApRvg0g1w6Qa4dANcugEu3QCXboBLN8ClG+DSDXDpBrh0A1y6AS7dAJdugEs3wKUb4NINcOkGuHQDXLoBLt0Al26ASzfApRvg0g1w6Qa4dANcugEu3QCXboBLN8ClG3DlZdDGBcAaYDlwJ7AQuAEYqFD3b+A34DvgW+Aw8DHwizaofrzSOBN4Cvhc0b7JygXgI+AJTaftJ+lXABuAH7sgu1M5BTwfvrcW/SJ9EXCkR7Lbi3zv0jrB9oP0Z4B/jIQXZQJ4peKzInvpbxvLbi/bgKumCzpn6VsSE16UvdOJz1X6C4kKL8qOqYaaHKXfD4wnLl3Ka5M1IDfpMgc/mYHwi+Hhuqy9ATmmAd4EbksgjirI4umDTouonHr6fOB8Jr28XF4sNyK3nr4RmJVAHHXZVJ7N5CR9EHgugTiaMASsK+rlJH01MCeBOJqyvqiXk/RHEohBw4qQZs5K+oMJxKDlITKSfh1wu/IzfghpWOltc2uU64EHgPdDLl3DcFE3hynjsHLK9lWQrGWtciX8ZU7SNyrilJTvLRFjeUMRyx/Fh+QgfZsizh2RY7lambvPZkxfrKh7IGIcwihwTFF/Tg7SZVF0h6L+kYixFIxqKucg/e4mG78BydOciB6Rkhyka4YWee78FzGWKOQgfYmi7kjEOKKRg/R7FHWTPBCVunQZy+9S1O/GQ1RN6tJlh2h2w7oylz4eOZ4opC5dM7QcBf6NGEs0NNKbTuPqoJm5JPkQJUg/17DuTZFj6YQmndu30m+NHE+ZoU7HF2pwsouxqRDpZxQf8FIXY3tdOfzNjBhLdLYrMmbjXdrReVSZP5fyXhedfaKIq7XP+6qycb8CKyM26NlIR+Zk+b8qYlxl1NKXRmigbGPtBh4Gbq55LeSasBX3NPBFhFjKRebqb4X5/mAq0gfCuPkTcGPEoJzJmTsj9NJdLqlnTBTnpxf5PwDsCWMyqyqmZLJk3t/nDU6B72mbB2++bFX0jtYquSxdZg47+7zR1rQ2ydvvxMwLe4o5H9RMlfPB77n2ZfbPYb7sxGd7kefqlJ49ERYsy118NGSF/Tjw+1QfOBBORsVcHcYsY+GvMtX42suWqr+eXNf4MNFGPBnOe09kIHykbgpCxvytiTXinVJ8Lycu/Izm8KqMR38l0IitHWZcmxIVflp5kqGFvBFoj1EDJkKvnowNid2gHol8PLt14UqT2qxbPq24QS0nBz4zlj0W3soRM418CfcB74ZNjG707L3h3Vt1kKHnMeBQj2WPhp2qhVVirfRCmGmQDYt7wyWmxWHDQDaVr614TGM8/HCSDPom9OyDwFllXEPhRxsuvTAtxhUYwo2KU2EYkRep7QvPvErEkD4Vg203nEVw+T0oskLr9YEgWfg1feGZ7D38qfp24H99EGZ9AK4LGgAAAABJRU5ErkJggg==" />
-                    <image x="117" y="109" width="106" height="115"
-                        xlink:href="data:img/png;base64,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" />
-                    <image x="44" y="38" width="81" height="87"
-                        xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFEAAABXCAYAAAB81qkrAAADIElEQVR4nO2cOYgUQRSG/13vW8QNFvHAc8FABC9EFDFRQdFEBUEEzQQ1NxE0V8TIyEBDY8VABFE8AhNZFRdRPBZkBZf1QtaDt1TLMLa7Pf3+pqt7/g/ewATV9eqb7po66EIEnAfwO2d8iqEBnRHkUHkkkYAkEpBEApJIQBIJSCIBSSQgiQQkkYAkEpBEApJIQBIJdESQwxQAk3KWteWwQUIOJwGcy1l273hCAl6+hagsJvFVzuR7AeyscuNZmMSFOa8VxapyDOiPhYAkEpBEApJIQBIJSCIBSSQgiQQkkYAkEpBEApJIQBIJSCIBSSQgiQQkkYAkEpBEApJIQBIJSCIBSSQgiQQkkYAkEpBEApJIQBIJSCIBSSQgiQQkkYAkEpBEApJIwCNxejStKBmT+DNnCvNrdCe7XooyCZ9zlp0IYLmn8oiY5Uml0/la17ZYrbTIHE9hkzjkKL/PU3lE9HhSMYkvHOU3A1gdq5mM2MuZGx3lh7wSjdPO8mWzA8A0Rw5f7OOQ49S4JHZXWOI9Z9tH3o1cRJA4AGBB+T5a5qCz3V8bh0cvCSKfAuiqjr+R4dmgs82P0TBYvk5Iqic8GksI1yoaewRvAJjprOdO45f1hDsxCRsyHYnkaIQ0NgF4T2rrnubrPyOKtHgAYFdEU8NuABcADJPaZ/3hjOZKjpElJvEOwEUA+wGsAjA3HJ5RJJNDPTaGPQrgGoDv5HZdScvfGtZfkMg6xtb/3QQnJCdT3B/tKZoQThlpd0ljxfaxuqItkjRq3GoWNi5F4uswaF5XcOdfRX6EEcdAltxtZeOh7rp/4lSrP7zNqT9I3N+4mXfMu5Ywv6xD9HnXBTaEI63aVaCNnRd7BCasBPCmDQW+DW2nMQ/A3TYS2Bu2henYKXdnwl51nQVeTVtcYLMmTH3qJu8jgMNFy2ukI+zP9NVAni2PXQorP6Vgs54DYf2wavJsBnIZwNKy5KWxAsBZAE8iFvcLwCMAx1l3XpFL+F1hMcP6z2Xh1+4Oe7xTC6w3YTjsCfeHLud56MdvZ537ZqXMfZDZBV7blu7tUS0eAH8AIsC251D0jUYAAAAASUVORK5CYII=" />
-                </svg>
-                <a class="price" href=""><?= $row['prd_price'] ?></a></span>
+    <div class="product_detail__container">
+        <div class="prd_detail_img_container">
+            <img src="img/products/<?= $row['prd_image'] ?>" alt="">
         </div>
-        <a href="" class="product-add-to-cart_link">
-            <div class="product-add-to-cart">
-                <svg class="product-add-to-cart_svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="40"
-                    height="40">
-                    <path class=""
-                        d="M13 -0.01171875C12.15 -0.01171875 11.338484 0.35142188 10.771484 0.98242188L4.4550781 8L1 8C0.45 8 0 8.45 0 9L0 11C0 11.55 0.45 12 1 12L1.3300781 12L2.7207031 20.330078C2.8807031 21.290078 3.7194531 22 4.6894531 22L14.060547 22C14.300547 19.73 15.39 17.719297 17 16.279297L17 13C17 12.45 17.45 12 18 12C18.55 12 19 12.45 19 13L19 14.929688C20.21 14.329688 21.56 14 23 14C23.45 14 23.890312 14.029844 24.320312 14.089844L24.669922 12L25 12C25.55 12 26 11.55 26 11L26 9C26 8.45 25.55 8 25 8L21.544922 8L15.228516 0.98242188C14.661516 0.35242187 13.85 -0.01171875 13 -0.01171875 z M 13 1.9980469C13.275375 1.9980469 13.550188 2.1063125 13.742188 2.3203125L18.855469 8L7.1445312 8L12.257812 2.3203125C12.450312 2.1063125 12.724625 1.9980469 13 1.9980469 z M 8 12C8.55 12 9 12.45 9 13L9 18C9 18.55 8.55 19 8 19C7.45 19 7 18.55 7 18L7 13C7 12.45 7.45 12 8 12 z M 13 12C13.55 12 14 12.45 14 13L14 18C14 18.55 13.55 19 13 19C12.45 19 12 18.55 12 18L12 13C12 12.45 12.45 12 13 12 z M 23 16C21.51 16 20.13 16.459766 19 17.259766C18.39 17.679766 17.850156 18.200781 17.410156 18.800781C16.710156 19.720781 16.240078 20.81 16.080078 22C16.020078 22.32 16 22.66 16 23C16 26.87 19.13 30 23 30C26.87 30 30 26.87 30 23C30 19.47 27.390234 16.550078 23.990234 16.080078C23.670234 16.020078 23.34 16 23 16 z M 23 19C23.17 19 23.340469 19.040859 23.480469 19.130859C23.790469 19.290859 24 19.62 24 20L24 22L26 22C26.55 22 27 22.45 27 23C27 23.55 26.55 24 26 24L24 24L24 26C24 26.55 23.55 27 23 27C22.45 27 22 26.55 22 26L22 24L20 24C19.45 24 19 23.55 19 23C19 22.45 19.45 22 20 22L21.300781 22L22 22L22 21.869141L22 20C22 19.45 22.45 19 23 19 z"
-                        fill="#FFCBCB" />
-                </svg>
-                <p>افزودن به سبد خرید</p>
+        <div class="prd_detail_attributes_container">
+            <nav>
+                <a href="">خانه</a>
+                <a href="">لباس</a>
+            </nav>
+            <div>
+                <h1><?= $row['prd_name'] ?></h1>
+                <!-- <label class="prd_size">سایز</label> -->
+                <!-- <select name="" id="">
+                    <option value="41">41</option>
+                    <option value="42">42</option>
+                    <option value="43">43</option>
+                </select> -->
+                <span>موجودی کالا: <?= $row['prd_stock'] ?></span>
+                <br>
+                <span>قیمت کالا: <?= $row['prd_price'] ?></span>
+                <h4>جزئیات محصول</h4>
+                <p dir="rtl"><?= $row['prd_detail'] ?></p>
             </div>
-        </a>
+        </div>
     </div>
-    <?php   
+<?php
 
 }
 
