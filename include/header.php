@@ -8,11 +8,11 @@ include("connection.php");
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <meta name="google" content="notranslate">
     <link rel="stylesheet" href="./Style/index-style.css?v=0.000001">
     <link rel="stylesheet" href="./css/all.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <?php if (isset($page) && $page === "about"): ?>
     <link rel="stylesheet" href="./Style/aboutus.css">
     <?php endif; ?>
@@ -22,6 +22,8 @@ include("connection.php");
 
 <body>
     <div class="bg-color-header"></div>
+<section class="Container">
+
     <header>
         <div class="left-menu header-item">
 
