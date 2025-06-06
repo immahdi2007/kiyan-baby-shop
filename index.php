@@ -107,7 +107,11 @@ include("include/header.php")
             </div> -->
             </div>
         </section>
+      
         <section class="all-products">
+            <div class="product_page_divider">
+                <h2 class="page_divider_title">محصولات فروشگاه پوشاک کیان</h2>
+            </div>
             <?php
             $query = "SELECT * FROM products";
             $result = mysqli_query($link, $query);
@@ -158,30 +162,7 @@ include("include/header.php")
 </div>
 
 <script>
-    document.querySelectorAll('.price').forEach(el => {
-        let priceNumber = parseInt(el.textContent.replace(/,/g, ""));
-        el.textContent = priceNumber.toLocaleString("fa-IR");
-        console.log(priceNumber.toLocaleString("fa-IR"))
-    });
 
-
-    //products fade effect
-    const cards = document.querySelectorAll(".product-item__container");
-    cards.forEach(card => {
-        card.addEventListener("mouseenter", () => {
-            cards.forEach(otherCard => {
-                if (otherCard !== card) {
-                    otherCard.classList.add("faded");
-                }
-            });
-        });
-
-        card.addEventListener("mouseleave", () => {
-            cards.forEach(otherCard => {
-                otherCard.classList.remove("faded");
-            });
-        })
-    });
 
     //homepage icon animation
     const pic1 = document.querySelector(".left-pic-1");
@@ -328,6 +309,46 @@ include("include/header.php")
             slider.scrollLeft = scrollLeft - walk;
         });
     });
+</script>
+<script>
+    const inputField = document.querySelector('.input-field');
+    const srchi = document.querySelector('.srch_i');
+    inputField.addEventListener('input', function () {
+        if (inputField.validity.valid) {
+            srchi.classList.add('valid');
+        } else {
+            srchi.classList.remove('valid');
+        }
+    });
+    const user__dropdown = document.querySelector('.user__dropdown');
+    const dropdown__wraper = document.querySelector('.dropdown__wraper');
+    const user__icon = document.querySelector('.buy-cart.left');
+    const userDropTrigger = [user__dropdown, dropdown__wraper, user__icon];
+    if (user__icon) {
+        userDropTrigger.forEach(el => {
+            el.addEventListener("mouseenter", () => {
+                user__dropdown.classList.add('show');
+            });
+            el.addEventListener("mouseleave", () => {
+                user__dropdown.classList.remove("show");
+            });
+        });
+    }
+    const ctg_dropdown = document.querySelector(".category__dropdown");
+    const prd_ctg = document.querySelector(".Product__categories");
+    const ctgDropdown__wraper = document.querySelector(".ctgDropdown__wraper");
+    const ctgDropDownTrigger = [ctg_dropdown, prd_ctg, ctgDropdown__wraper];
+
+    ctgDropDownTrigger.forEach(el => {
+        el.addEventListener("mouseenter", () => {
+            ctg_dropdown.classList.add("Cshow");
+            console.log("ok");
+        });
+        el.addEventListener("mouseleave", () => {
+            ctg_dropdown.classList.remove("Cshow");
+            console.log("leave");
+        });
+    }); 
 </script>
 <?php
 include("include/footer.php")

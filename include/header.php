@@ -28,7 +28,6 @@ include("connection.php");
         <div class="left-menu header-item">
 
             <?php
-                // echo  '<a class="left-link username__header" href="./userInformation.php" >'.$_SESSION['user']."</a>"; 
             if (isset($_SESSION['user'])) {
                 ?>
             <div class="dropdown__wraper"></div>
@@ -94,7 +93,8 @@ include("connection.php");
             <nav>
                 <a class="left-link" href="./login.php">ورود یا ثبت نام</a>
                 <?php
-            } ?>
+                } 
+            ?>
             </nav>
             <div class="search-box-div">
                 <i class="fa-solid fa-magnifying-glass srch_i"></i>
@@ -108,6 +108,40 @@ include("connection.php");
             <nav>
                 <a id="home" href="index.php">صفحه اصلی</a>
                 <a class="Product__categories" href="#">دسته بندی محصولات</a>
+                <div class="ctgDropdown__wraper"></div>
+                <ul class="category__dropdown" dir="rtl">
+                    <li>
+                        <ul class="category_dropdown_header">
+                            <li><strong><a href="">کفش و کتانی</a></strong></li>
+                            <li><a href="">کفش مجلسی</a></li>
+                            <li><a href="">کفش اسپرت</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="category_dropdown_header">
+                            <li><strong><a href="">لباس</a></strong></li>
+                            <li><a href="">تیشرت</a></li>
+                            <li><a href="">پیراهن</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="category_dropdown_header">
+                            <li><strong><a href="">شلوار</a></strong></li>
+                            <li><a href="">شلوار جین</a></li>
+                            <li><a href="">شلوار راحتی</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="category_dropdown_header">
+                            <li><strong><a href="">سیسمونی</a></strong></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="category_dropdown_header">
+                            <li><strong><a href="">اکسسوری</a></strong></li>
+                        </ul>
+                    </li>
+                </ul>
             </nav>
             <a href="#" class="buy-cart">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="36" height="36">
@@ -118,36 +152,3 @@ include("connection.php");
             </a>
         </div>
     </header>
-    <script>
-    const inputField = document.querySelector('.input-field');
-    const srchi = document.querySelector('.srch_i');
-    inputField.addEventListener('input', function() {
-        if (inputField.validity.valid) {
-            srchi.classList.add('valid');
-        } else {
-            srchi.classList.remove('valid');
-        }
-    });
-    const user__dropdown = document.querySelector('.user__dropdown');
-    const dropdown__wraper = document.querySelector('.dropdown__wraper');
-    const user__icon = document.querySelector('.buy-cart.left');
-
-    dropdown__wraper.addEventListener('mouseenter', function() {
-        user__dropdown.classList.add('show');
-    });
-    dropdown__wraper.addEventListener('mouseleave', function() {
-        user__dropdown.classList.remove('show');
-    });
-    user__dropdown.addEventListener('mouseenter', function() {
-        user__dropdown.classList.add('show');
-    });
-    user__dropdown.addEventListener('mouseleave', function() {
-        user__dropdown.classList.remove('show');
-    });
-    user__icon.addEventListener('mouseenter', function() {
-        user__dropdown.classList.add('show');
-    });
-    user__icon.addEventListener('mouseleave', function() {
-        user__dropdown.classList.remove('show');
-    });
-    </script>
