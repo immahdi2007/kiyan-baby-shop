@@ -42,12 +42,11 @@ if ($row = mysqli_fetch_array($result)) {
                                 <label for="">تعداد کالا</label>
                                 <div class="product_amount">
                                     <p class="plusNum">+</p>
-                                    <input class="prdStock" type="text" name="prd_amount" id="" value="l">
+                                    <input class="prdStock" type="text" name="prd_amount" id="" value="1">
                                     <p class="MinusNum">-</p>
                                 </div>
                                 <input type="hidden" name="id" value="<?= $row['prd_code'] ?>" id="">
                                 <span><?= $row['prd_stock'] ?> عدد در انبار</span>
-
                             </div>
 
                             <button href="" type="submit" class="product-add-to-cart_link detail">
