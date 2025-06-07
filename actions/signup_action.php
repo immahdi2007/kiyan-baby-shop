@@ -121,7 +121,10 @@
     }
     $adduserQuery = "INSERT INTO users (id, email, realname, password, type) VALUES (NULL,'$email','$realname','$password',0)";
     if (mysqli_query($link, $adduserQuery) === true) {
+        $last_id = mysqli_insert_id($link);
         $_SESSION['user'] = $realname;
+        $_SESSION["user_id"] = $last_id;
+        $_SESSION["userType"] = "public";
         echo '<div class="complete_div">
                 <video width="100px" height="100px">
                     <source src="../icons/loginloeader.webm" type="video/webm">

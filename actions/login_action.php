@@ -30,6 +30,7 @@ $passCheck = mysqli_fetch_array($passCheckR);
  if(isset($row) && $row[1] === $username){
     if($passCheck[0] === $password){
     $_SESSION['user'] = $row['realname'];
+    $_SESSION["user_id"] = $row['id'];
     if($row['type'] == 1){
         $_SESSION["userType"] = "admin";
     }elseif($row['type'] == 0){
