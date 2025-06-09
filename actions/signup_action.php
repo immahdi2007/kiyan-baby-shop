@@ -124,6 +124,7 @@
         $last_id = mysqli_insert_id($link);
         $_SESSION['user'] = $realname;
         $_SESSION["user_id"] = $last_id;
+        $_SESSION["email"] = $email;
         $_SESSION["userType"] = "public";
         echo '<div class="complete_div">
                 <video width="100px" height="100px">

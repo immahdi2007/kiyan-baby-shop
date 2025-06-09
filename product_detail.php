@@ -12,13 +12,12 @@ $result = mysqli_query($link, $query);
 if ($row = mysqli_fetch_array($result)) {
     ?>
     <div class="product_detail__container">
-        <div class="prd_detail_img_container">
+        <div class="prd_detail_img_container hover">
             <img src="img/products/<?= $row['prd_image'] ?>" alt="">
         </div>
         <div class="prd_detail_attributes_container">
             <nav>
-                <a href="">خانه</a>
-                <a href="">لباس</a>
+                <a href="index.php">خانه</a>
             </nav>
             <div class="prd_detail_attributes">
                 <div class="prd_att_1">
@@ -38,16 +37,16 @@ if ($row = mysqli_fetch_array($result)) {
                             <span class="price_T"><?= $row['prd_price'] ?></span>
                         </span>
                         <form action="order.php" method="get">
-                            <div>
-                                <label for="">تعداد کالا</label>
+                            <div class="prd_att_amount__container">
+                                <label for="">:تعداد کالا</label>
                                 <div class="product_amount">
                                     <p class="plusNum">+</p>
-                                    <input class="prdStock" type="text" name="prd_amount" id="" value="1">
+                                    <input class="prdStock" type="text" name="prd_amount" id="" value="1" readonly>
                                     <p class="MinusNum">-</p>
                                 </div>
                                 <input type="hidden" name="id" value="<?= $row['prd_code'] ?>" id="">
-                                <span><?= $row['prd_stock'] ?> عدد در انبار</span>
                             </div>
+                            <span dir="rtl" class="prd_stock_att"><?= $row['prd_stock'] ?> عدد در انبار </span>
 
                             <button href="" type="submit" class="product-add-to-cart_link detail">
                                 <div class="product-add-to-cart">

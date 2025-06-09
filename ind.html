@@ -1,73 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<style>
-    .container {
-  display: grid;
-  grid-template-columns: 200px 1fr; /* ستون چپ ثابت 200 پیکسل، ستون راست کششی */
-  gap: 10px;
-  height: 300px; /* یا هر ارتفاعی که می‌خوای */
-  border: 1px solid #ccc;
-}
-
-.left {
-  background-color: #f0f0f0;
-  /* ثابت بودن رو میشه با تنظیم ارتفاع و overflow کنترل کرد */
-  height: 100%;
-  position: sticky; /* اگر بخوای وقتی اسکرول کنی سمت چپ بمونه */
-  top: 0;
-  padding: 10px;
-  box-sizing: border-box;
-}
-
-.right {
-  background-color: #fafafa;
-  overflow-y: auto; /* اگر تعداد آیتم ها زیاد شد، اسکرول بخوره */
-  padding: 10px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column; /* آیتم ها به صورت عمودی زیر هم */
-  gap: 10px;
-}
-
-.item {
-  background-color: #ddd;
-  padding: 10px;
-  border-radius: 4px;
-}
-
-</style>
-<body>
-    
-
-    <div class="container">
-  <div class="left">
-    ستون ثابت سمت چپ
-  </div>
-  <div class="right">
-    <div class="item">آیتم ۱</div>
-    <div class="item">آیتم ۲</div>
-    <div class="item">آیتم ۳</div>
-        <div class="item">آیتم ۱</div>
-    <div class="item">آیتم ۲</div>
-    <div class="item">آیتم ۳</div>
-        <div class="item">آیتم ۱</div>
-    <div class="item">آیتم ۲</div>
-    <div class="item">آیتم ۳</div>
-        <div class="item">آیتم ۱</div>
-    <div class="item">آیتم ۲</div>
-    <div class="item">آیتم ۳</div>    <div class="item">آیتم ۱</div>
-    <div class="item">آیتم ۲</div>
-    <div class="item">آیتم ۳</div>    <div class="item">آیتم ۱</div>
-    <div class="item">آیتم ۲</div>
-    <div class="item">آیتم ۳</div>
-    <!-- آیتم های جدید به صورت ردیفی زیر هم اضافه میشن -->
-  </div>
+<div class="input_container_prd">
+    <label for="prd_image" class="custom-file-label">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#5b5b5b" viewBox="0 0 24 24">
+            <path d="M5 20h14v-2H5v2zm7-16l-5 5h3v4h4v-4h3l-5-5z"/>
+        </svg>
+        <span>آپلود تصویر کالا</span>
+    </label>
+    <input type="file" id="prd_image" name="prd_image" style="display: none;">
 </div>
-
-</body>
-</html>

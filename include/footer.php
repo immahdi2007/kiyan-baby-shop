@@ -52,49 +52,43 @@
 
 
     //sadasdasdsadsadasd
-        const Minusbtn = document.querySelector(".MinusNum");
-        const plusbtn = document.querySelector(".plusNum");
-        const prdAmountInp = document.querySelector(".prdStock");
-        const prd_price = document.querySelector(".prd_price");
-        const total_price = document.querySelector(".sumprice_prd");
 
-        const prd_stock = parseInt(product.dataset.stock);
-        document.addEventListener("DOMContentLoaded", () => {
-            let price = parseInt(prd_price.textContent.replace(/٬/g, "").replace(/[۰-۹]/g, d => "۰۱۲۳۴۵۶۷۸۹".indexOf(d)));
-            let TotalPrice = parseInt(prdAmountInp.value) * price;
-            total_price.textContent = TotalPrice.toLocaleString("FA-IR");
-        })
+    document.addEventListener("DOMContentLoaded", () => {
+        let price = parseInt(prd_price.textContent.replace(/٬/g, "").replace(/[۰-۹]/g, d => "۰۱۲۳۴۵۶۷۸۹".indexOf(d)));
+        let TotalPrice = parseInt(prdAmountInp.value) * price;
+        total_price.textContent = TotalPrice.toLocaleString("FA-IR");
+    })
 
+    const Minusbtn = document.querySelector(".MinusNum");
+    const plusbtn = document.querySelector(".plusNum");
+    const prdAmountInp = document.querySelector(".prdStock");
+    const prd_stock = <?= isset($row['prd_stock']) ? json_encode((int) $row['prd_stock']) : 0 ?>;
+    const prd_price = document.querySelector(".prd_price");
+    const total_price = document.querySelector(".sumprice_prd");
 
-        if (plusbtn) {
-            plusbtn.addEventListener("click", () => {
-                let currentValue = parseInt(prdAmountInp.value);
-                if (isNaN(currentValue)) currentValue = 1;
-                if (currentValue < prd_stock) {
-                    prdAmountInp.value = currentValue + 1;
-                    let price = parseInt(prd_price.textContent.replace(/٬/g, "").replace(/[۰-۹]/g, d => "۰۱۲۳۴۵۶۷۸۹".indexOf(d)));
-                    let TotalPrice = parseInt(prdAmountInp.value) * price;
-                    total_price.textContent = TotalPrice.toLocaleString("FA-IR");
-                } else {
-                    return;
-                }
-            });
-        }
-
-
-
-        if (Minusbtn) {
-            Minusbtn.addEventListener("click", () => {
-                let currentValue = parseInt(prdAmountInp.value);
-                if (isNaN(currentValue)) currentValue = 1;
-                if (parseInt(prdAmountInp.value) > 1) {
-                    prdAmountInp.value = currentValue - 1;
-                    let price = parseInt(prd_price.textContent.replace(/٬/g, "").replace(/[۰-۹]/g, d => "۰۱۲۳۴۵۶۷۸۹".indexOf(d)));
-                    let TotalPrice = parseInt(prdAmountInp.value) * price;
-                    total_price.textContent = TotalPrice.toLocaleString("FA-IR");
-                }
-            });
-        }
+    if (plusbtn) {
+        plusbtn.addEventListener("click", () => {
+            let currentValue = parseInt(prdAmountInp.value);
+            if (isNaN(currentValue)) currentValue = 1;
+            if (currentValue < prd_stock) {
+                prdAmountInp.value = currentValue + 1;
+                let price = parseInt(prd_price.textContent.replace(/٬/g, "").replace(/[۰-۹]/g, d => "۰۱۲۳۴۵۶۷۸۹".indexOf(d)));
+                let TotalPrice = parseInt(prdAmountInp.value) * price;
+                total_price.textContent = TotalPrice.toLocaleString("FA-IR");
+            } else {
+                return;
+            }
+        });
+    }
+    if (Minusbtn) {
+        Minusbtn.addEventListener("click", () => {
+            let currentValue = parseInt(prdAmountInp.value);
+            if (isNaN(currentValue)) currentValue = 1;
+            if (parseInt(prdAmountInp.value) > 1) {
+                prdAmountInp.value = currentValue - 1;
+            }
+        });
+    }
 
 
 

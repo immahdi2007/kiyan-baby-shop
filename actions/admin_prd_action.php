@@ -1,5 +1,15 @@
 <?php
 session_start();
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <?php
 if (!(isset($_SESSION["user"]) && $_SESSION["userType"] == "admin")) {
     // echo $_SESSION['user']."  ".$_SESSION["userType"];
     header("Location: ../index.php");
@@ -84,6 +94,10 @@ if ($uploadOk == 1) {
     mysqli_stmt_bind_param($stmt, "siisss",$prd_name, $prd_stock, $prd_price, $prd_category, $prd_image, $prd_detail);
     if(mysqli_stmt_execute($stmt)){
         echo "کالا با موفقیت اضافه شد"."<br>";
+        ?>
+            <a href="../index.php">صفحه اصلی</a>
+            <a href="../admin_products.php">افزودن محصول جدید</a>
+        <?php
     }else{
         exit( "خطا در اضافه شدن کالا ". mysqli_stmt_error($stmt)); 
     }
@@ -101,3 +115,5 @@ if ($uploadOk == 1) {
 mysqli_close($link);
 
 ?>
+</body>
+</html>

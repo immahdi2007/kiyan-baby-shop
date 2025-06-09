@@ -3,9 +3,9 @@ ob_start();
 include("include/connection.php");
 include("include/header.php");
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if(isset($_POST['delete_order_product'])){
+    if (isset($_POST['delete_order_product'])) {
         $prd_code_Delete = $_POST['delete_order_product'];
-        if(isset($_SESSION['cart'][$prd_code_Delete])){
+        if (isset($_SESSION['cart'][$prd_code_Delete])) {
             unset($_SESSION['cart'][$prd_code_Delete]);
             $_SESSION["message_delete_cart"] = "محصول مورد نظر از سبد خرید حذف شد";
         }
@@ -34,9 +34,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 $prd_code = 0;
 if (isset($_SESSION["user_id"])) {
-    // $prd_code = $_GET['id'];
+
 } else {
-    exit("<h1>لطفا ابتدا وارد سایت شوید</h1>");
+    ?>
+    <div style="width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center;">
+        <a style="background-color: white; color:black; border-radius: 10px; padding: 20px;" href="login.php">لطفا ابتدا
+            وارد شوید</a>
+    </div>
+    <?php
+    exit();
 }
 
 if (isset($_GET['id'])) {
@@ -60,8 +66,17 @@ if (isset($_GET['id'])) {
             $_SESSION['cart'] = [];
         }
 
+
+
         if (isset($_SESSION['cart'][$prd_code])) {
-            $_SESSION['cart'][$prd_code]['prd_amount'] += $prd_amount;
+            $amount_now = $_SESSION['cart'][$prd_code]['prd_amount'];
+            $amount_after_add = $amount_now + $prd_amount;
+            $max_prd_stock = (int) $_SESSION['cart'][$prd_code]['prd_stock'];
+            if ($max_prd_stock < $amount_after_add) {
+                $_SESSION['cart'][$prd_code]['prd_amount'] = $max_prd_stock;
+            } else {
+                $_SESSION['cart'][$prd_code]['prd_amount'] = $amount_after_add;
+            }
         } else {
             $_SESSION['cart'][$prd_code] = $Product;
         }
@@ -80,7 +95,7 @@ if (isset($_GET['id'])) {
 } elseif (isset($_SESSION['message_save_cart'])) {
     echo "<script>alert('{$_SESSION["message_save_cart"]}')</script>";
     unset($_SESSION['message_save_cart']);
-}elseif (isset($_SESSION['message_delete_cart'])) {
+} elseif (isset($_SESSION['message_delete_cart'])) {
     echo "<script>alert('{$_SESSION["message_delete_cart"]}')</script>";
     unset($_SESSION['message_delete_cart']);
 }
@@ -125,9 +140,17 @@ if (isset($_GET['id'])) {
 
     <div class="order_addtocart__container">
         <div class="prd_att_addToCart">
-            <form action="order.php" method="get">
+            <form action="order_action.php" method="post">
                 <div>
                     <input type="hidden" name="id" value="" id="">
+                </div>
+                <div class="input_container_prd">
+                    <label for="">موبایل</label>
+                    <input class="input_product" type="text" name="order_mobile" required>
+                </div>
+                <div class="input_container_prd">
+                    <label for="">ادرس</label>
+                    <input class="input_product" type="text" name="order_address" required>
                 </div>
                 <button href="" type="submit" class="product-add-to-cart_link detail">
                     <div class="product-add-to-cart">
