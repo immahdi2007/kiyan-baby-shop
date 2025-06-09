@@ -87,6 +87,9 @@ if (isset($_GET['id'])) {
 
     }
 }
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = [];
+}   
 ?>
 
 <?php if (isset($_SESSION['message'])) {
@@ -151,6 +154,18 @@ if (isset($_GET['id'])) {
                 <div class="input_container_prd">
                     <label for="">ادرس</label>
                     <input class="input_product" type="text" name="order_address" required>
+                </div>
+                  <?php
+                $total_price = 0;
+                    foreach($_SESSION['cart'] as $item){
+                        $total_price += (int)$item['prd_price'] * (int)$item['prd_amount'];
+                    }
+                ?>
+                <div>
+                    <h4 style="color: green; display: flex; justify-content: end; padding-right: 10px;">
+                        <span style="margin-right: 5px;">تومان</span>
+                        <span class="price_T"><?= $total_price ?></span>
+                    </h4>
                 </div>
                 <button href="" type="submit" class="product-add-to-cart_link detail">
                     <div class="product-add-to-cart">

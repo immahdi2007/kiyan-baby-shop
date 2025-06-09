@@ -106,7 +106,7 @@ include("connection.php");
         <div class="right-menu header-item">
             <nav>
                 <a id="home" href="index.php">صفحه اصلی</a>
-                <a class="Product__categories" href="#">دسته بندی محصولات</a>
+                <a class="Product__categories" href="#product_lists">دسته بندی محصولات</a>
                 <div class="ctgDropdown__wraper"></div>
                 <ul class="category__dropdown" dir="rtl">
                     <li>
