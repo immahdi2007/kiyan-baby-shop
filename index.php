@@ -81,7 +81,7 @@ if(isset($_SESSION['succ_message'])){
                     fill="#FFCBCB" />
             </svg>
         </a>
-        <section class="special-product__container">
+        <!-- <section class="special-product__container">
             <div class="special-product__title-container">
                 <svg class="special-prdoct__ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="60"
                     height="60">
@@ -94,7 +94,7 @@ if(isset($_SESSION['succ_message'])){
             <div class="slider">
                 
             </div>
-        </section>
+        </section> -->
 
         <section class="all-products">
             <div class="product_page_divider">
