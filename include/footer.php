@@ -95,8 +95,18 @@
     //homepage icon animation
     const pic1 = document.querySelector(".left-pic-1");
     const pic2 = document.querySelector(".left-pic-2");
-    const pic3 = document.querySelector(".left-pic-3")
+    const pic3 = document.querySelector(".left-pic-3");
     const parent = document.querySelector(".home-page");
+    const scrollTopBtn = document.querySelector(".scrollTopBtn");
+    if(scrollTopBtn){
+        window.addEventListener("scroll", () => {
+            if(window.scrollY > 300){
+                scrollTopBtn.classList.add("show-scrollTop");
+            } else{
+                scrollTopBtn.classList.remove("show-scrollTop");
+            }
+        })
+    }
     if (parent) {
         parent.addEventListener("mouseenter", () => {
             pic1.classList.add("pic-active");

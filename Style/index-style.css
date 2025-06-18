@@ -64,7 +64,7 @@ body {
     width: 100%;
     max-width: 1426px;
     background: linear-gradient(90deg, #00d2ff 0%, #3a47d5 100%);
-
+    position: relative;
 }
 a {
     text-decoration: none;
@@ -79,6 +79,7 @@ a {
     right: 0;
     /* background:linear-gradient(0deg, var(--bgcolor) 20%, white 70%); */
     background: white;
+    z-index: 1;
 }
 
 header {
@@ -641,6 +642,7 @@ header .title {
     margin-top: -400px;
     position: relative;
     z-index: 10;
+    margin-bottom: 200px;
 }
 .prd-ctg{
     border-radius: 50%;
@@ -997,17 +999,31 @@ footer li a:hover {
         0 0 121px var(--greencl-dark);
 }
 
-.scroll-top {
-    position: sticky;
-    /* left: -0px; */
-    margin-left: -46px;
-    margin-bottom: 70px;
-    top: 90%;
+    /* .scroll-top {
+        position: absolute;   
+        bottom: 10px;
+        left: 10px;
+        width: 60px;
+        filter: drop-shadow(0px 2px 1px #11111148);
+        transform: translate(50px, 100px);
+
+        transition: all .3s;
+        z-index: 20;
+    } */
+.scrollTopBtn{
+    position: fixed;   
+    bottom: 10px;
+    /* left: 10px; */
     width: 60px;
     filter: drop-shadow(0px 2px 1px #11111148);
-    transition: .3s;
+    transform: translateX(-100px);
+    opacity: 0;
+    transition: transform .3s, opacity .3s;
     z-index: 20;
-
+}
+.show-scrollTop{
+    opacity: 1;
+    transform: translateX(10px);
 }
 
 .scroll-top:hover {

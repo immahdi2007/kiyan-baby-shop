@@ -74,13 +74,7 @@ if(isset($_SESSION['succ_message'])){
                 </a>
             </div>
         </section>
-        <a href="#">
-            <svg class="scroll-top" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
-                <path
-                    d="M15,3C8.373,3,3,8.373,3,15c0,6.627,5.373,12,12,12s12-5.373,12-12C27,8.373,21.627,3,15,3z M19.707,13.707 c-0.391,0.391-1.023,0.391-1.414,0L16,11.414V21c0,0.552-0.447,1-1,1s-1-0.448-1-1v-9.586l-2.293,2.293 c-0.391,0.391-1.023,0.391-1.414,0c-0.391-0.391-0.391-1.023,0-1.414l4-4C14.488,8.098,14.744,8,15,8s0.512,0.098,0.707,0.293l4,4 C20.098,12.684,20.098,13.316,19.707,13.707z"
-                    fill="#FFCBCB" />
-            </svg>
-        </a>
+ 
         <!-- <section class="special-product__container">
             <div class="special-product__title-container">
                 <svg class="special-prdoct__ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="60"
@@ -166,7 +160,13 @@ if(isset($_SESSION['succ_message'])){
     </aside>
 </div>
 
-
+       <a class="scrollTopBtn" href="#">
+            <svg class="scroll-top" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                <path
+                    d="M15,3C8.373,3,3,8.373,3,15c0,6.627,5.373,12,12,12s12-5.373,12-12C27,8.373,21.627,3,15,3z M19.707,13.707 c-0.391,0.391-1.023,0.391-1.414,0L16,11.414V21c0,0.552-0.447,1-1,1s-1-0.448-1-1v-9.586l-2.293,2.293 c-0.391,0.391-1.023,0.391-1.414,0c-0.391-0.391-0.391-1.023,0-1.414l4-4C14.488,8.098,14.744,8,15,8s0.512,0.098,0.707,0.293l4,4 C20.098,12.684,20.098,13.316,19.707,13.707z"
+                    fill="#FFCBCB" />
+            </svg>
+        </a>
 <?php
 include("include/footer.php")
     ?>
